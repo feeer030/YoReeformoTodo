@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard CRM - YoReformoTodo</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;500;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body style="background-color: var(--bg-light);">
+    <script>
+        const pass = prompt("Área restringida. Introduce la contraseña (admin123):");
+        if (pass !== "admin123") {
+            window.location.href = "index.html";
+        }
+    </script>
+
+    <nav class="navbar" style="position: static;">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-brand">
+                <i data-lucide="layout-dashboard" class="brand-icon"></i>
+                YoReformoTodo <span style="font-size: 0.9rem; font-weight: 500; color: var(--text-light); margin-left: 8px;">Admin</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Ver Web</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" style="padding: 3rem 1.5rem;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem;">
+            <div>
+                <h1 style="font-family: 'Outfit', sans-serif; font-size: 2.5rem; color: var(--secondary); margin-bottom: 0.5rem; letter-spacing: -0.02em;">Gestión de Clientes</h1>
+                <p style="color: var(--text-light);">Contactos captados por el Asistente IA</p>
+            </div>
+            <button onclick="fetchLeads()" class="btn btn-outline" style="border-color: var(--primary); color: var(--primary);">
+                <i data-lucide="refresh-cw" style="width: 16px; margin-right: 8px;"></i> Actualizar
+            </button>
+        </div>
+
+        <div class="dashboard-card">
+            <div class="table-responsive">
+                <table class="leads-table">
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Contacto (Email / Tel)</th>
+                            <th>Origen</th>
+                            <th>Estado</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="leads-body">
+                        <!-- Leads will be injected here -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <div id="empty-state" style="display: none; text-align: center; padding: 4rem 2rem;">
+                <div style="width: 64px; height: 64px; background: rgba(239, 122, 42, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; color: var(--primary);">
+                    <i data-lucide="inbox" style="width: 32px; height: 32px;"></i>
+                </div>
+                <h3 style="font-family: 'Outfit'; font-size: 1.5rem; color: var(--secondary); margin-bottom: 0.5rem;">No hay contactos aún</h3>
+                <p style="color: var(--text-light);">Los clientes captados por el asistente web aparecerán aquí.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        async function fetchLeads() {
+            try {
+                const response = await fetch('/api/contacts');
+                const result = await response.json();
+                
+                const tbody = document.getElementById('leads-body');
+                const emptyState = document.getElementById('empty-state');
+                
+                tbody.innerHTML = '';
+                
+                if (result.data && result.data.length > 0) {
+                    emptyState.style.display = 'none';
+                    result.data.forEach(lead => {
+                        const date = new Date(lead.created_at).toLocaleString('es-ES', { 
+                            dateStyle: 'medium', timeStyle: 'short' 
+                        });
+                        
+                        const isNew = lead.status === 'new';
+                        const statusBadge = isNew 
+                            ? '<span class="badge badge-new">Nuevo</span>' 
+                            : '<span class="badge badge-contacted">Contactado</span>';
+
+                        const actionBtn = isNew
+                            ? `<button onclick="markAsContacted(${lead.id})" class="btn-sm btn-contact">Marcar Contactado</button>`
+                            : `<span style="color: var(--text-light); font-size: 0.85rem;"><i data-lucide="check" style="width:14px; display:inline-block; vertical-align:middle;"></i> Listo</span>`;
+
+                        const tr = document.createElement('tr');
+                        tr.innerHTML = `
+                            <td><span style="color: var(--text-light);">${date}</span></td>
+                            <td class="fw-600">${lead.contact_info}</td>
+                            <td><span class="context-pill"><i data-lucide="bot" style="width:14px;"></i> ${lead.context}</span></td>
+                            <td>${statusBadge}</td>
+                            <td>${actionBtn}</td>
+                        `;
+                        tbody.appendChild(tr);
+                    });
+                    lucide.createIcons();
+                } else {
+                    emptyState.style.display = 'block';
+                }
+            } catch (error) {
+                console.error('Error fetching leads:', error);
+                alert("No se pudo conectar con el servidor local. Asegúrate de que index.js está en ejecución (puerto 3000).");
+            }
+        }
+
+        async function markAsContacted(id) {
+            try {
+                await fetch(`/api/contacts/${id}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ status: 'contacted' })
+                });
+                fetchLeads();
+            } catch (error) {
+                console.error('Error updating lead:', error);
+            }
+        }
+
+        // Fetch leads on load
+        document.addEventListener('DOMContentLoaded', fetchLeads);
+    </script>
+</body>
+</html>

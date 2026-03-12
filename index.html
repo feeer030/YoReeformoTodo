@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YoReformoTodo - Reformas Integrales</title>
+  
+  <!-- Estilos -->
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
+  <!-- Iconos Lucide -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" id="scroll-bar"></div>
+
+  <!-- Navegación -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="#" class="nav-brand">
+        <i data-lucide="hammer" class="brand-icon"></i>
+        YoReformoTodo
+      </a>
+      <div class="nav-links">
+        <a href="#inicio" class="nav-link">Inicio</a>
+        <a href="#proyectos" class="nav-link">Proyectos</a>
+        <a href="#servicios" class="nav-link">Servicios</a>
+        <a href="#nosotros" class="nav-link">Sobre Nosotros</a>
+        <a href="#contacto" class="btn btn-primary">Presupuesto Gratis</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="inicio" class="hero">
+    <div class="hero-bg">
+      <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80" alt="Construcción">
+    </div>
+    <div class="container hero-grid">
+      
+      <div class="hero-content" data-aos="fade-up" data-aos-duration="1200">
+        <div class="reveal-text" data-aos="reveal-left">
+          <h1 class="hero-title">Expertos en Reformas Integrales</h1>
+        </div>
+        <p class="hero-text" data-aos="fade-up" data-aos-delay="400">Renovamos tu hogar con profesionalidad, calidad y más de 20 años de experiencia en el sector de la construcción.</p>
+        <div class="hero-btn-group">
+          <a href="#contacto" class="btn btn-primary">Solicitar Presupuesto</a>
+          <a href="ejemplos.html" class="btn btn-outline" style="border-color: rgba(255,255,255,0.3); color: white;">Nuestros Trabajos</a>
+        </div>
+      </div>
+      
+      <div class="ai-agent-container" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+        <div class="ai-header">
+          <div class="ai-avatar">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80" alt="Agente IA">
+            <span class="online-dot"></span>
+          </div>
+          <div class="ai-info">
+            <h3>Asistente Virtual IA</h3>
+            <p>En línea - Responde al instante</p>
+          </div>
+        </div>
+        
+        <div class="ai-chat-body" id="ai-chat-body">
+          <div class="ai-message bot">
+            <p>¡Hola! 👋 Soy el asistente inteligente de YoReformoTodo. ¿Te gustaría agendar una cita para hablar sobre tu futura reforma? Déjame tu <b>correo</b> o <b>móvil</b>.</p>
+          </div>
+        </div>
+        
+        <div class="ai-input-area">
+          <form id="ai-form" onsubmit="event.preventDefault(); handleAiSubmit();">
+            <input type="text" id="ai-user-input" placeholder="Escribe tu email o móvil..." required autocomplete="off">
+            <button type="submit" class="ai-send-btn">
+              <i data-lucide="send"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Servicios Section -->
+  <section id="servicios" class="section-padding">
+    <div class="container">
+      <div class="text-center" data-aos="fade-up">
+        <h2 class="heading-sm">Nuestros Servicios</h2>
+        <div style="width: 60px; height: 4px; background-color: var(--primary); margin: 1rem auto;"></div>
+      </div>
+      
+      <div class="services-grid">
+        <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="service-icon"><i data-lucide="home" style="width:40px; height:40px;"></i></div>
+          <h3 class="service-title">Reforma de Viviendas</h3>
+          <p class="service-desc">Transformamos hogares con acabados premium y gestión integral de obra de principio a fin.</p>
+          <a href="ejemplos.html#viviendas" class="btn btn-outline" style="margin-top: 1rem; width: 100%;">Ver Ejemplos <i data-lucide="arrow-right" style="width:16px; margin-left:8px;"></i></a>
+        </div>
+
+        <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="service-icon"><i data-lucide="layout" style="width:40px; height:40px;"></i></div>
+          <h3 class="service-title">Reforma de Cocinas</h3>
+          <p class="service-desc">Diseños funcionales y modernos. Mobiliario de alta calidad y aprovechamiento de espacios.</p>
+          <a href="ejemplos.html#cocinas" class="btn btn-outline" style="margin-top: 1rem; width: 100%;">Ver Ejemplos <i data-lucide="arrow-right" style="width:16px; margin-left:8px;"></i></a>
+        </div>
+
+        <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="service-icon"><i data-lucide="bath" style="width:40px; height:40px;"></i></div>
+          <h3 class="service-title">Reforma de Baños</h3>
+          <p class="service-desc">Especialistas en platos de ducha a ras de suelo y revestimientos hidrófugos de tendencia.</p>
+          <a href="ejemplos.html#banos" class="btn btn-outline" style="margin-top: 1rem; width: 100%;">Ver Ejemplos <i data-lucide="arrow-right" style="width:16px; margin-left:8px;"></i></a>
+        </div>
+
+        <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+          <div class="service-icon"><i data-lucide="grid" style="width:40px; height:40px;"></i></div>
+          <h3 class="service-title">Reformas Comerciales</h3>
+          <p class="service-desc">Acondicionamiento de locales comerciales, oficinas y naves industriales con rapidez.</p>
+          <a href="ejemplos.html#comerciales" class="btn btn-outline" style="margin-top: 1rem; width: 100%;">Ver Ejemplos <i data-lucide="arrow-right" style="width:16px; margin-left:8px;"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trayectoria / Experiencia Section -->
+  <section id="nosotros" class="section-padding experience-section">
+    <div class="container experience-grid">
+      
+      <div class="experience-image" data-aos="fade-right">
+        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80" alt="Arquitecto revisando planos">
+      </div>
+
+      <div data-aos="fade-left">
+        <p class="heading-sm" style="margin-bottom: 0.5rem;">Nuestra Trayectoria</p>
+        <h2 class="heading-lg" style="color: white; font-size: 3rem;">Más de 20 años de experiencia...</h2>
+        <p style="color: #CBD5E1; margin: 1.5rem 0; font-size: 1.125rem;">
+          Desde nuestros inicios, nos hemos comprometido con la excelencia técnica y la satisfacción total del cliente. Entendemos que cada proyecto es único, por lo que aplicamos un enfoque personalizado.
+        </p>
+        <p style="color: #CBD5E1; margin-bottom: 2rem;">
+          Contamos con un equipo multidisciplinar de arquitectos, jefes de obra y operarios especializados que garantizan plazos y calidades acordadas contractualmente.
+        </p>
+        
+        <div class="exp-stats">
+          <div class="stat-item">
+            <h3>500+</h3>
+            <p>Obras Finalizadas</p>
+          </div>
+          <div class="stat-item">
+            <h3>100%</h3>
+            <p>Clientes Satisfechos</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contacto" class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        
+        <div class="footer-brand">
+          <a href="#" class="nav-brand" style="color: white;">
+            <i data-lucide="hammer" class="brand-icon"></i>
+            YoReformoTodo
+          </a>
+          <p>
+            Líderes en reformas de lujo y construcción sostenible. 
+            Más de 15 años transformando el paisaje urbano y creando hogares.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Servicios</h4>
+          <div class="footer-links">
+            <a href="#servicios">Reformas Integrales</a>
+            <a href="#servicios">Obra Nueva</a>
+            <a href="#servicios">Interiorismo</a>
+            <a href="#servicios">Locales Comerciales</a>
+            <a href="admin-dashboard.html" style="margin-top: 1rem; color: var(--primary); font-weight: 600; display: block;">Acceso Admin</a>
+          </div>
+        </div>
+
+        <div>
+           <h4 class="footer-heading">Contacto</h4>
+           <div class="footer-links">
+             <a href="tel:+34912345678"><i data-lucide="phone" style="width: 16px; margin-right: 5px;"></i> +34 912 345 678</a>
+             <a href="mailto:info@yoreformotodo.es"><i data-lucide="mail" style="width: 16px; margin-right: 5px;"></i> info@yoreformotodo.es</a>
+             <a href="#"><i data-lucide="map-pin" style="width: 16px; margin-right: 5px;"></i> Madrid, España</a>
+             <a href="https://wa.me/34912345678" target="_blank" style="color: #25D366; font-weight: 500;"><i data-lucide="message-circle" style="width: 16px; margin-right: 5px;"></i> WhatsApp</a>
+           </div>
+        </div>
+        
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 YoReformoTodo. Todos los derechos reservados.</p>
+        <div class="footer-legal">
+          <a href="#" style="margin-left: 1.5rem;">Aviso Legal</a>
+          <a href="#" style="margin-left: 1.5rem;">Privacidad</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+    <i data-lucide="arrow-up"></i>
+  </button>
+
+  <!-- Scripts -->
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/34912345678" target="_blank" style="position:fixed; width:60px; height:60px; bottom:40px; left:40px; background-color:#25D366; color:#FFF; border-radius:50px; text-align:center; font-size:30px; box-shadow: 2px 2px 5px rgba(0,0,0,0.3); z-index:100; display:flex; justify-content:center; align-items:center; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+    <i data-lucide="message-circle" style="width: 35px; height: 35px;"></i>
+  </a>
+
+  <!-- Inicializar AOS Animations -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      once: false, // Animación cada vez que se hace scroll (opcional, false para ver el efecto repetido)
+      offset: 120,
+      duration: 1000,
+      easing: 'ease-out-back',
+      delay: 50
+    });
+
+    // Lógica Barra de Progreso y Botón Volver Arriba
+    window.onscroll = function() {
+      let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      let scrolled = (winScroll / height) * 100;
+      document.getElementById("scroll-bar").style.width = scrolled + "%";
+
+      const backToTop = document.getElementById("backToTop");
+      const navbar = document.querySelector(".navbar");
+
+      if (winScroll > 50) {
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
+
+      if (winScroll > 500) {
+        backToTop.classList.add("visible");
+      } else {
+        backToTop.classList.remove("visible");
+      }
+    };
+
+    // Inicializar Iconos
+    lucide.createIcons();
+
+    // Lógica del Agente IA
+    function handleAiSubmit() {
+      const input = document.getElementById('ai-user-input');
+      const chatBody = document.getElementById('ai-chat-body');
+      const text = input.value.trim();
+      if (!text) return;
+      
+      // Añadir mensaje del usuario
+      const userMsg = document.createElement('div');
+      userMsg.className = 'ai-message user';
+      userMsg.innerHTML = `<p>${text}</p>`;
+      chatBody.appendChild(userMsg);
+      input.value = '';
+      
+      // Auto-scroll
+      chatBody.scrollTop = chatBody.scrollHeight;
+      
+      // Mostrar animacion "Escribiendo..."
+      const typingMsg = document.createElement('div');
+      typingMsg.className = 'ai-message bot';
+      typingMsg.innerHTML = `<p class="ai-typing"><span></span><span></span><span></span></p>`;
+      chatBody.appendChild(typingMsg);
+      chatBody.scrollTop = chatBody.scrollHeight;
+      
+      // Enviar a la IA
+      setTimeout(async () => {
+        try {
+          // Primero enviamos el mensaje al cerebro de la IA para obtener una respuesta
+          const response = await fetch('/api/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: text })
+          });
+          const data = await response.json();
+          
+          chatBody.removeChild(typingMsg);
+          const botReply = document.createElement('div');
+          botReply.className = 'ai-message bot';
+          botReply.innerHTML = `<p>${data.reply}</p>`;
+          chatBody.appendChild(botReply);
+          chatBody.scrollTop = chatBody.scrollHeight;
+
+          // Si el mensaje parece un contacto, lo guardamos paralelamente en la base de datos
+          if (text.includes('@') || text.match(/^[0-9+\- ]{6,}$/)) {
+            fetch('/api/contacts', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                contact_info: text,
+                context: "Captado durante conversación IA"
+              })
+            });
+          }
+        } catch(err) {
+          console.error(err);
+          chatBody.removeChild(typingMsg);
+          const errorMsg = document.createElement('div');
+          errorMsg.className = 'ai-message bot';
+          errorMsg.innerHTML = `<p>Vaya, tengo un problema de conexión. ¿Me dejas tu teléfono para que te llamemos directamente?</p>`;
+          chatBody.appendChild(errorMsg);
+        }
+        chatBody.scrollTop = chatBody.scrollHeight;
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
