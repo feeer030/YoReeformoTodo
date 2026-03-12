@@ -14,6 +14,10 @@ app.use(express.json());
 // Servir archivos estáticos del frontend
 app.use(express.static(path.join(__dirname, '..')));
 
+// Ruta principal explícita para evitar el "Not Found"
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'index.html'));
+});
 // Configuración de Gemini AI
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "AIzaSyCPEpfoT2ZnCL0eT36xDb2xizl87X2JfE0");
 const model = genAI.getGenerativeModel({ 
